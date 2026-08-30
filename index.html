@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en" id="root"><head><style id="qw-theme">:root {
+  --color-bg: #121218;
+  --color-text: #e4e4ed;
+  --color-navbar-bg: #1a1a24;
+  --color-bg-chat-view: #121218;
+  --color-bg-secondary: #1a1a24;
+  --color-bg-tertiary: #1e1e2a;
+  --color-bg-hover: #2a2a38;
+  --color-surface: #1e1e2a;
+  --color-surface-hover: #2a2a38;
+  --color-surface-active: #353546;
+  --color-border: #ffffff1f;
+  --color-border-light: #ffffff0f;
+  --color-border-strong: #3a3a4e;
+  --color-primary: #8575ff;
+  --color-primary-dark: #4200db;
+  --color-primary-light: #8575ff;
+  --color-primary-bg: color-mix(in srgb, #8575ff 15%, transparent);
+  --color-primary-hover-border: #4200db;
+  --color-nav-icon-active: #8575ff;
+  --color-nav-hover-border: #8575ff;
+  --color-primary-alpha-3: color-mix(in srgb, #8575ff 3%, transparent);
+  --color-primary-alpha-5: color-mix(in srgb, #8575ff 5%, transparent);
+  --color-primary-alpha-8: color-mix(in srgb, #8575ff 8%, transparent);
+  --color-primary-alpha-12: color-mix(in srgb, #8575ff 12%, transparent);
+  --color-primary-alpha-15: color-mix(in srgb, #8575ff 15%, transparent);
+  --color-primary-alpha-20: color-mix(in srgb, #8575ff 20%, transparent);
+  --color-primary-alpha-25: color-mix(in srgb, #8575ff 25%, transparent);
+  --color-primary-alpha-30: color-mix(in srgb, #8575ff 30%, transparent);
+  --color-primary-alpha-40: color-mix(in srgb, #8575ff 40%, transparent);
+  --color-primary-alpha-50: color-mix(in srgb, #8575ff 50%, transparent);
+  --color-primary-alpha-60: color-mix(in srgb, #8575ff 60%, transparent);
+  --color-primary-subtle: color-mix(in srgb, #8575ff 25%, transparent);
+  --color-primary-border: color-mix(in srgb, #8575ff 50%, transparent);
+  --color-focus-ring: color-mix(in srgb, #8575ff 60%, transparent);
+  --color-sidebar-hover: color-mix(in srgb, #8575ff 15%, transparent);
+  --block-hover-outline: 1px dashed color-mix(in srgb, #8575ff 50%, transparent);
+  --block-selected-outline: 1px solid #8575ff;
+  --block-selection-outline-offset: 2px;
+  --block-selected-halo: 0 0 8px color-mix(in srgb, #8575ff 40%, transparent);
+  --color-accent: #8575ff;
+  --color-accent-foreground: #8575ff;
+  --color-accent-dark: #4200db;
+  --color-accent-light: color-mix(in srgb, #8575ff 15%, transparent);
+  --color-accent-inverse: #fff;
+  --color-link: #8575ff;
+  --color-primary-gradient-end: color-mix(in srgb, #8575ff 35%, transparent);
+  --color-primary-bg-solid: #1a1530;
+  --color-user-bubble: #333843;
+  --color-user-bubble-text: #e4e4ed;
+  --color-text-secondary: #a0a0b4;
+  --color-text-tertiary: #8a8a9a;
+  --color-text-muted: #6e6e82;
+  --color-text-on-primary: #fff;
+  --color-success: #4ade80;
+  --color-success-dark: #00802f;
+  --color-success-light: #d9ffd6;
+  --color-success-hover: #005c26;
+  --color-success-bg: #1c2c22;
+  --color-success-border: #0e3d1c;
+  --color-success-foreground: #4ade80;
+  --color-success-dark-foreground: #00802f;
+  --color-success-text: #4ade80;
+  --color-error: #ff6b6b;
+  --color-error-dark: #db0000;
+  --color-error-light: #ffe0e0;
+  --color-error-hover: #3b1a24;
+  --color-error-bg: #3b1a24;
+  --color-error-border: #5e1a24;
+  --color-error-active-border: #db0000;
+  --color-error-foreground: #ff6b6b;
+  --color-error-dark-foreground: #db0000;
+  --color-error-inverse: #fff;
+  --color-error-text: #ff6b6b;
+  --color-warning: #fbbf24;
+  --color-warning-dark: #573a00;
+  --color-warning-light: #fffbbd;
+  --color-warning-hover: #db9200;
+  --color-warning-bg: #3d3520;
+  --color-warning-border: #5e4a1a;
+  --color-warning-foreground: #fbbf24;
+  --color-warning-dark-foreground: #573a00;
+  --color-warning-inverse: #573a00;
+  --color-surface-warning: #fffbbd;
+  --color-text-warning: #573a00;
+  --color-info: #60a5fa;
+  --color-info-dark: #006ce0;
+  --color-info-light: #d1f1ff;
+  --color-info-hover: #003b8f;
+  --color-info-bg: #1a2a42;
+  --color-info-border: #0f3d6e;
+  --color-info-foreground: #60a5fa;
+  --color-info-dark-foreground: #002a66;
+  --color-info-inverse: #fff;
+  --color-overlay: #000000b3;
+  --color-shadow: #0000004d;
+  --color-hover: #ffffff0d;
+  --color-tooltip-bg: #1e1e2af2;
+  --color-tooltip-text: #e4e4ed;
+  --color-voice-purple: #8575ff;
+  --color-voice-purple-dark: #4200db;
+  --color-voice-purple-light: #8575ff;
+  --color-voice-red: #ff6b6b;
+  --color-voice-red-dark: #db0000;
+  --color-voice-amber: #fbbf24;
+  --color-voice-purple-glow: #8575ff66;
+  --color-voice-red-glow: #db000066;
+  --font-sans: "Amazon Ember", "Helvetica Neue", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: "SF Mono", "Monaco", "Menlo", "Consolas", monospace;
+  --text-2xs: .5625rem;
+  --text-xs: .625rem;
+  --text-sm: .6875rem;
+  --text-base: .75rem;
+  --text-md: .8125rem;
+  --text-lg: .875rem;
+  --text-xl: 1rem;
+  --text-2xl: 1.125rem;
+  --text-3xl: 1.25rem;
+  --text-4xl: 1.5rem;
+  --text-5xl: 2rem;
+  --spacing-1: calc(.25rem * 1);
+  --spacing-1-5: calc(.25rem * 1.5);
+  --spacing-2: calc(.25rem * 2);
+  --spacing-3: calc(.25rem * 3);
+  --spacing-4: calc(.25rem * 4);
+  --spacing-5: calc(.25rem * 5);
+  --spacing-6: calc(.25rem * 6);
+  --spacing-7: calc(.25rem * 7);
+  --spacing-8: calc(.25rem * 8);
+  --spacing-9: calc(.25rem * 9);
+  --spacing-10: calc(.25rem * 10);
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-card: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 8px;
+  --shadow-sm: 0 1px 2px #0003;
+  --shadow-md: 0 4px 12px #0000004d;
+  --color-success-bg-solid: #1a3d28;
+  --color-error-bg-solid: #4a2028;
+  --color-error-border-solid: #5e1a24;
+  --color-warning-bg-solid: #4a3a1e;
+  --color-warning-text: #fbbf24;
+  --color-info-bg-solid: #1a3050;
+  --color-info-bg-solid-alt: #222240;
+  --color-info-text: #60a5fa;
+  --color-info-text-alt: #818cf8;
+  --color-emerald: #34d399;
+  --color-teal: #5eead4;
+  --color-code-bg: #1e1e2a;
+  --color-code-header-bg: #252535;
+  --color-code-text: #e4e4ed;
+  --color-code-border: #2e2e3e;
+  --color-code-muted: #6e6e82;
+  --color-inline-code-bg: #1e1e2a;
+  --color-inline-code-text: #e4e4ed;
+  --color-inline-code-border: #2e2e3e;
+  --color-scrollbar-thumb: #3a3a4e;
+  --color-scrollbar-track: transparent;
+  --color-graph-node-text: #e4e4ed;
+  --color-graph-node-text-dim: #6e6e82;
+  --color-graph-edge-default: #6e6e82;
+  --color-graph-edge-cross: #f39c12;
+  --color-graph-edge-text: #a0a0b4;
+  --color-graph-edge-stroke: #1a1a24;
+  --color-graph-highlight-bg: #ff6b6b;
+  --color-graph-highlight-border: #e74c3c;
+  --color-graph-search-bg: gold;
+  --color-graph-search-border: orange;
+  --color-graph-focus-border: #f44;
+  --color-graph-external-border: #6e6e82;
+  --color-graph-cat-file: #5dade2;
+  --color-graph-cat-folder: #aab7b8;
+  --color-graph-cat-file-aggregate: #5499c7;
+  --color-graph-cat-class: #bb8fce;
+  --color-graph-cat-function: #58d68d;
+  --color-graph-cat-method: #48c9b0;
+  --color-graph-cat-variable: #f5b041;
+  --color-graph-cat-import: #eb984e;
+  --color-graph-cat-module: #7e8ce0;
+  --color-graph-cat-concept: #ec7063;
+  --color-graph-cat-person: #ff8a8a;
+  --color-graph-cat-org: #76d7c4;
+  --color-graph-cat-organization: #76d7c4;
+  --color-graph-cat-product: #b8b0fe;
+  --color-graph-cat-metric: #fea0c0;
+  --color-graph-cat-location: #7e9bb5;
+  --color-graph-cat-date: #f092c0;
+  --color-graph-cat-code: #5dade2;
+  --color-graph-cat-doc: #aab7b8;
+  --color-graph-cat-url: #45d6b5;
+  --color-graph-cat-email: #8e7cf7;
+  --color-graph-cat-unknown: #d5dbdb;
+  --color-graph-rel-contains: #d5dbdb;
+  --color-graph-rel-extends: #bb8fce;
+  --color-graph-rel-implements: #5dade2;
+  --color-graph-rel-imports: #eb984e;
+  --color-graph-rel-uses: #58d68d;
+  --color-graph-rel-calls: #52be80;
+  --color-graph-rel-references: #f5b041;
+  --color-graph-rel-related-to: #aab7b8;
+  --color-graph-rel-works-on: #ec7063;
+  --color-graph-rel-owns: #48c9b0;
+  --color-graph-rel-depends-on: #eb984e;
+  --color-graph-rel-parent-of: #d5dbdb;
+  --qs-content: #fff;
+  --qs-main: #fff;
+  --qs-primary-foreground: #131920;
+  --qs-secondary-foreground: #656871;
+  --qs-tertiary-foreground: #6e6e82;
+  --qs-placeholder-foreground: #8c8c94;
+  --qs-divider: #dedee3;
+  --qs-default-border: #8c8c94;
+  --qs-neutral-soft: #b4b4bb;
+  --qs-neutral-gray-50: #1e1e2a;
+  --qs-tertiary-background: #1e1e2a;
+  --qs-action-hover: #f3f3f7;
+  --qs-primary-default: #4200db;
+  --qs-primary-dark: #35009e;
+  --qs-primary-light: #e8e6ff;
+  --qs-success-default: #00802f;
+  --qs-error-default: #db0000;
+  --qs-font-sans: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --safe-top: 0px;
+  --safe-bottom: 0px;
+  --safe-left: 0px;
+  --safe-right: 0px;
+  --qs-font-family: "Amazon Ember", "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+  --qs-font-base-letter-spacing: .15px;
+  --qs-shadow-sm: 0 0 2px 0 #00000029, 0 0 4px 0 #00000029;
+  --qs-shadow-md: 0 0 2px 0 #00000029, 0 2px 8px 1px #00000029;
+  --qs-shadow-lg: 0 4px 16px 4px #00000029, 0 2px 6px 1px #00000029;
+  --qs-shadow-xl: 0 4px 8px 2px #00000029, 0 6px 20px 4px #00000029;
+  --qs-width-modal-sm: 384px;
+  --qs-width-modal-md: 600px;
+  --qs-width-modal-lg: 1136px;
+  --qs-grid-gap: 16px;
+  --qs-grid-gap-xl: 24px;
+  --qs-primary-medium: #8575ff;
+  --qs-primary-inverse: #fff;
+  --qs-neutral-lightest: #f9f9fb;
+  --qs-neutral-light: #f3f3f7;
+  --qs-neutral-default: #dedee3;
+  --qs-neutral-medium: #8c8c94;
+  --qs-neutral-deep: #656871;
+  --qs-neutral-dark: #333843;
+  --qs-neutral-strong: #131920;
+  --qs-neutral-white: #fff;
+  --qs-neutral-black: #000;
+  --qs-success-medium: #005c26;
+  --qs-success-dark: #00471e;
+  --qs-success-light: #d9ffd6;
+  --qs-success-inverse: #fff;
+  --qs-info-default: #006ce0;
+  --qs-info-medium: #003b8f;
+  --qs-info-dark: #002a66;
+  --qs-info-light: #d1f1ff;
+  --qs-info-inverse: #fff;
+  --qs-warning-default: #f2b100;
+  --qs-warning-medium: #db9200;
+  --qs-warning-dark: #573a00;
+  --qs-warning-light: #fffbbd;
+  --qs-warning-inverse: #573a00;
+  --qs-warning-experimental: #f2b100;
+  --qs-warning-experimental-light: #fffbbd;
+  --qs-warning-experimental-light-foreground: #fffbbd;
+  --qs-error-medium: #900;
+  --qs-error-dark: #700000;
+  --qs-error-light: #ffe0e0;
+  --qs-error-inverse: #fff;
+  --qs-connection-default: #db3300;
+  --qs-connection-soft: #ff997a;
+  --qs-connection-light: #ffe0d6;
+  --qs-connection-dark: #661800;
+  --qs-automation-default: #b3008f;
+  --qs-automation-medium: #d600ba;
+  --qs-automation-soft: #ff94f1;
+  --qs-automation-light: #ffe0fb;
+  --qs-automation-dark: #660052;
+  --qs-insight-default: #a000b8;
+  --qs-insight-soft: #f299ff;
+  --qs-insight-light: #fce6ff;
+  --qs-insight-dark: #590066;
+  --qs-visualization-default: #7300e5;
+  --qs-visualization-soft: #d4a8ff;
+  --qs-visualization-light: #f2e5ff;
+  --qs-visualization-dark: #45008a;
+  --qs-spice: #ff9800;
+  --qs-coachmark: #006ce0;
+  --qs-brand: #fff;
+  --qs-brand-foreground: #131920;
+  --qs-brand-navbar: #131920;
+  --qs-brand-navbar-foreground: #fff;
+  --qs-brand-navbar-light: #dedee3;
+  --qs-brand-navbar-dark: #000;
+  --qs-application-navbar: #4200db;
+  --qs-application-navbar-foreground: #fff;
+  --qs-application-navbar-light: #e8e6ff;
+  --qs-application-navbar-dark: #35009e;
+  --qs-dimension: #4200db;
+  --qs-dimension-foreground: #fff;
+  --qs-dimension-experimental: #4200db;
+  --qs-dimension-experimental-foreground: #4200db;
+  --qs-measure: #00802f;
+  --qs-measure-foreground: #fff;
+  --qs-measure-experimental: #f2b100;
+  --qs-measure-experimental-foreground: #f2b100;
+  --qs-content-inverse: #333843;
+  --qs-content-inverse-active: #131920;
+  --qs-secondary: #dedee3;
+  --qs-disabled: #8c8c94;
+  --qs-divider-light: #f3f3f7;
+  --qs-hover-border: #333843;
+  --qs-active-border: #4200db;
+  --qs-disabled-border: #dedee3;
+  --qs-error-border: #ffe0e0;
+  --qs-error-active-border: #db0000;
+  --qs-disabled-foreground: #b4b4bb;
+  --qs-primary-inverse-foreground: #fff;
+  --qs-error-foreground: #db0000;
+  --qs-contrast-foreground: #131920;
+  --qs-main-foreground: #131920;
+  --qs-main-secondary-foreground: #656871;
+  --qs-action-disabled: #f3f3f7;
+  --qs-action-active: #e8e6ff;
+  --qs-default-badge: #dedee3;
+  --qs-tag-default: #dedee3;
+  --qs-tag-soft-border: #b4b4bb;
+  --qs-focus-offset: 1px;
+  --qs-toggle-tile-sm: calc(.25rem * 8);
+  --qs-toggle-tile-md: calc(.25rem * 12);
+  --qs-toggle-tile-lg: calc(.25rem * 15);
+  --qs-shadow-pin-right: inset 4px 0 4px -4px #00000029;
+  --qs-shadow-pin-left: inset -4px 0 4px -4px #00000029;
+  --react-pdf-text-layer: 1;
+  --highlight-bg-color: #b400aa;
+  --highlight-selected-bg-color: #006400;
+  --react-pdf-annotation-layer: 1;
+  --annotation-unfocused-field-background: url("data:image/svg+xml;charset=UTF-8,<svg width='1px' height='1px' xmlns='http://www.w3.org/2000/svg'><rect width='100%' height='100%' style='fill:rgba(0, 54, 255, 0.13);'/></svg>");
+  --input-focus-border-color: Highlight;
+  --input-focus-outline: 1px solid Canvas;
+  --input-unfocused-border-color: transparent;
+  --input-disabled-border-color: transparent;
+  --input-hover-border-color: black;
+  --link-outline: none;
+  color-scheme: dark;
+}
+body { background: var(--color-bg); color: var(--color-text); }
+a { color: var(--color-link, var(--color-primary)); }</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller University Training Library | Amazon Seller University MENA</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<style>
+:root {
+  --primary-500:#f97316;--primary-600:#ea580c;--primary-700:#c2410c;
+  --navy-500:#232f3e;--navy-800:#111827;--navy-900:#0a0f1a;
+  --g50:#f9fafb;--g100:#f3f4f6;--g200:#e5e7eb;--g300:#d1d5db;
+  --g400:#9ca3af;--g500:#6b7280;--g600:#4b5563;--g700:#374151;--g800:#1f2937;--g900:#111827;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--g50);color:var(--g800);line-height:1.6;overflow-x:hidden}
+body.rtl{direction:rtl;text-align:right}
+a{color:inherit;text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:8px}
+::-webkit-scrollbar-track{background:var(--g100)}
+::-webkit-scrollbar-thumb{background:var(--g300);border-radius:4px}
+
+/* NAVBAR */
+.navbar{position:fixed;top:0;left:0;right:0;z-index:1500;background:rgba(35,47,62,0.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,0.08);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;transition:box-shadow 0.3s}
+.navbar.scrolled{box-shadow:0 4px 24px rgba(0,0,0,0.2)}
+.nav-brand{display:flex;align-items:center;gap:12px}
+.nav-logo{width:36px;height:36px;background:linear-gradient(135deg,var(--primary-500),var(--primary-600));border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;font-weight:800}
+.nav-title{color:#fff;font-size:18px;font-weight:700;letter-spacing:-0.3px}
+.nav-title span{color:var(--primary-500)}
+.nav-links{display:flex;align-items:center;gap:16px}
+.nav-btn{color:rgba(255,255,255,0.7);font-size:14px;font-weight:500;padding:8px 16px;border-radius:8px;transition:all 0.2s}
+.nav-btn:hover{color:#fff;background:rgba(255,255,255,0.1)}
+.lang-toggle{background:rgba(255,255,255,0.15);border:1.5px solid rgba(255,255,255,0.3);color:#fff;padding:8px 20px;border-radius:8px;font-size:14px;font-weight:600;min-width:120px;transition:all 0.2s}
+.lang-toggle:hover{background:rgba(255,255,255,0.25);transform:translateY(-1px)}
+
+/* HERO */
+.hero{position:relative;min-height:480px;background:linear-gradient(135deg,var(--navy-800) 0%,var(--navy-900) 40%,#0c1220 100%);display:flex;align-items:center;justify-content:center;padding:120px 32px 80px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:60px 60px}
+.hero-glow{position:absolute;width:600px;height:600px;border-radius:50%;filter:blur(120px);opacity:0.15;pointer-events:none}
+.hero-glow-1{top:-200px;right:-100px;background:var(--primary-500)}
+.hero-glow-2{bottom:-200px;left:-100px;background:#3b82f6}
+.hero-content{position:relative;z-index:2;text-align:center;max-width:800px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(249,115,22,0.15);border:1px solid rgba(249,115,22,0.3);color:var(--primary-500);padding:6px 16px;border-radius:100px;font-size:13px;font-weight:600;margin-bottom:24px;letter-spacing:0.5px;text-transform:uppercase}
+.hero-badge-dot{width:6px;height:6px;background:var(--primary-500);border-radius:50%;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
+.hero h1{font-size:48px;font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1.5px;margin-bottom:20px}
+.hero h1 .grad{background:linear-gradient(135deg,var(--primary-500),#fdba74,#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero p{font-size:17px;color:rgba(255,255,255,0.6);max-width:600px;margin:0 auto 32px;line-height:1.7}
+.hero-search{display:flex;align-items:center;max-width:540px;margin:0 auto 28px;background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);border-radius:14px;padding:6px;transition:all 0.3s}
+.hero-search:focus-within{background:rgba(255,255,255,0.12);border-color:var(--primary-500);box-shadow:0 0 0 4px rgba(249,115,22,0.15)}
+.hero-search input{flex:1;background:none;border:none;outline:none;color:#fff;font-size:16px;font-family:inherit;padding:12px 16px}
+.hero-search input::placeholder{color:rgba(255,255,255,0.35)}
+.hero-search-btn{background:linear-gradient(135deg,var(--primary-500),var(--primary-600));color:#fff;border:none;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;cursor:pointer;white-space:nowrap;transition:all 0.2s}
+.hero-search-btn:hover{transform:scale(1.02);box-shadow:0 4px 16px rgba(249,115,22,0.4)}
+.hero-stats{display:flex;align-items:center;justify-content:center;gap:48px;margin-top:8px}
+.hero-stat-val{font-size:28px;font-weight:800;color:#fff}
+.hero-stat-lbl{font-size:13px;color:rgba(255,255,255,0.45);font-weight:500;margin-top:2px}
+
+/* MAIN */
+.main{max-width:1280px;margin:0 auto;padding:48px 32px 120px}
+.sec-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;flex-wrap:wrap;gap:16px}
+.sec-title{font-size:28px;font-weight:800;color:var(--g900);letter-spacing:-0.5px}
+.sec-sub{font-size:15px;color:var(--g500);margin-top:4px}
+.results-count{font-size:14px;color:var(--g400);font-weight:500}
+
+/* CATEGORY PILLS */
+.cat-bar{display:flex;gap:8px;margin-bottom:32px;overflow-x:auto;padding-bottom:8px;scrollbar-width:none}
+.cat-bar::-webkit-scrollbar{display:none}
+.cat-pill{display:inline-flex;align-items:center;gap:6px;padding:10px 20px;border-radius:100px;border:1.5px solid var(--g200);background:#fff;color:var(--g600);font-size:14px;font-weight:500;cursor:pointer;transition:all 0.25s cubic-bezier(0.34,1.56,0.64,1);white-space:nowrap;user-select:none}
+.cat-pill:hover{border-color:rgba(249,115,22,0.3);color:var(--primary-600);background:rgba(249,115,22,0.05);transform:translateY(-2px);box-shadow:0 4px 12px rgba(249,115,22,0.1)}
+.cat-pill.active{background:linear-gradient(135deg,var(--primary-500),var(--primary-600));color:#fff;border-color:transparent;box-shadow:0 4px 16px rgba(249,115,22,0.3);transform:translateY(-2px)}
+.pill-count{background:rgba(0,0,0,0.08);padding:2px 8px;border-radius:100px;font-size:12px;font-weight:600}
+.cat-pill.active .pill-count{background:rgba(255,255,255,0.25)}
+
+/* VIDEO GRID */
+.vid-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:24px}
+.vid-card{background:#fff;border-radius:16px;overflow:hidden;border:1px solid var(--g100);transition:all 0.35s cubic-bezier(0.34,1.56,0.64,1);cursor:pointer;opacity:0;transform:translateY(20px)}
+.vid-card.vis{opacity:1;transform:translateY(0)}
+.vid-card:hover{transform:translateY(-6px);box-shadow:0 20px 40px rgba(0,0,0,0.08),0 8px 16px rgba(0,0,0,0.04);border-color:transparent}
+.vid-card:hover .thumb-overlay{opacity:1}
+.vid-card:hover .play-btn{transform:translate(-50%,-50%) scale(1)}
+.vid-card:hover .thumb img{transform:scale(1.05)}
+.thumb{position:relative;width:100%;padding-top:56.25%;overflow:hidden}
+.thumb img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 0.5s}
+.thumb-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.35);opacity:0;transition:opacity 0.3s;z-index:2}
+.play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0.8);z-index:3;width:56px;height:56px;background:rgba(255,255,255,0.95);border-radius:50%;display:flex;align-items:center;justify-content:center;transition:all 0.3s cubic-bezier(0.34,1.56,0.64,1);box-shadow:0 4px 20px rgba(0,0,0,0.2)}
+.play-btn svg{width:22px;height:22px;fill:var(--primary-600);margin-left:3px}
+.badge-level{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:6px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px;z-index:4;color:#fff}
+.badge-beginner{background:rgba(16,185,129,0.9)}
+.badge-intermediate{background:rgba(59,130,246,0.9)}
+.vid-info{padding:20px}
+.vid-cat{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--primary-600);margin-bottom:8px}
+.vid-title{font-size:16px;font-weight:700;color:var(--g900);line-height:1.4;margin-bottom:8px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vid-desc{font-size:13px;color:var(--g500);line-height:1.5;margin-bottom:16px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.vid-meta{display:flex;align-items:center;justify-content:space-between;padding-top:16px;border-top:1px solid var(--g100)}
+.yt-btn{padding:5px 12px;border-radius:6px;font-size:12px;font-weight:600;border:1px solid var(--g200);color:var(--g600);transition:all 0.2s;display:inline-block}
+.yt-btn:hover{background:rgba(249,115,22,0.05);border-color:rgba(249,115,22,0.3);color:var(--primary-600)}
+.dur-label{font-size:12px;color:var(--g400);font-weight:500}
+
+/* EMPTY STATE */
+.empty{text-align:center;padding:80px 32px;display:none}
+.empty.vis{display:block}
+.empty-icon{width:80px;height:80px;background:var(--g100);border-radius:20px;display:flex;align-items:center;justify-content:center;margin:0 auto 24px;font-size:36px}
+
+/* MODAL */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);z-index:3000;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;padding:32px}
+.modal-bg.active{opacity:1;pointer-events:all}
+.modal{background:#fff;border-radius:20px;max-width:800px;width:100%;overflow:hidden;transform:scale(0.92) translateY(20px);transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1);max-height:90vh;overflow-y:auto}
+.modal-bg.active .modal{transform:scale(1) translateY(0)}
+.modal-video{position:relative;width:100%;padding-top:56.25%;background:var(--navy-900)}
+.modal-video iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.modal-close{position:absolute;top:16px;right:16px;width:40px;height:40px;background:rgba(0,0,0,0.5);border:none;border-radius:50%;color:#fff;font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.2s;z-index:5}
+.modal-close:hover{background:rgba(0,0,0,0.7);transform:scale(1.1)}
+.modal-details{padding:28px 32px 32px}
+.modal-details h2{font-size:22px;font-weight:800;color:var(--g900);margin-bottom:12px;line-height:1.3}
+.modal-details p{font-size:15px;color:var(--g500);line-height:1.7;margin-bottom:20px}
+.modal-btn{display:inline-flex;align-items:center;gap:8px;padding:12px 24px;border-radius:10px;font-size:14px;font-weight:600;transition:all 0.2s;text-decoration:none}
+.modal-btn-primary{background:linear-gradient(135deg,var(--primary-500),var(--primary-600));color:#fff}
+.modal-btn-primary:hover{box-shadow:0 4px 16px rgba(249,115,22,0.3);transform:translateY(-1px)}
+
+/* FOOTER */
+.footer{background:var(--navy-800);padding:48px 32px 32px;text-align:center}
+.footer p{color:rgba(255,255,255,0.4);font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero h1{font-size:32px}
+  .hero p{font-size:15px}
+  .hero-stats{gap:24px}
+  .navbar{padding:0 16px}
+  .nav-links .nav-btn{display:none}
+  .main{padding:32px 16px 100px}
+  .vid-grid{grid-template-columns:1fr}
+}
+@media(max-width:480px){
+  .hero{padding:100px 16px 60px;min-height:400px}
+  .hero h1{font-size:28px}
+  .hero-search{flex-direction:column}
+  .hero-search-btn{width:100%;text-align:center}
+}
+
+/* ANIMATION */
+@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+.anim{animation:fadeUp 0.6s ease forwards}
+.d1{animation-delay:0.1s}.d2{animation-delay:0.2s}.d3{animation-delay:0.3s}.d4{animation-delay:0.4s}
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar" id="navbar">
+  <div class="nav-brand">
+    <div class="nav-logo">▶</div>
+    <div class="nav-title" id="navTitle">Seller University <span>Training Library</span></div>
+  </div>
+  <div class="nav-links">
+    <button class="nav-btn" id="navBrowse" onclick="scrollTo('videos')">Browse Videos</button>
+    <button class="nav-btn" id="navHome" onclick="scrollTo('hero')">Home</button>
+    <button class="lang-toggle" id="langBtn" onclick="toggleLang()">🇸🇦 العربية</button>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero" id="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-content">
+    <div class="hero-badge anim"><span class="hero-badge-dot"></span><span id="heroBadge">Amazon Seller University</span></div>
+    <h1 class="anim d1"><span id="heroLine1">Seller Training</span><br><span class="grad" id="heroLine2">Video Library</span></h1>
+    <p class="anim d2" id="heroDesc">Your complete guide to selling on Amazon — from getting started to advanced fulfillment. Learn listing, FBA, Brand Registry, and more with step-by-step video tutorials.</p>
+    <div class="hero-search anim d3">
+      <input type="text" id="searchInput" placeholder="Search videos by topic, keyword, or category..." oninput="render()">
+      <button class="hero-search-btn" id="searchBtn" onclick="render()">Search</button>
+    </div>
+    <div class="hero-stats anim d4">
+      <div><div class="hero-stat-val" id="statVids">0</div><div class="hero-stat-lbl" id="statVidsLbl">Video Guides</div></div>
+      <div><div class="hero-stat-val">4</div><div class="hero-stat-lbl" id="statCatLbl">Categories</div></div>
+      <div><div class="hero-stat-val">2</div><div class="hero-stat-lbl" id="statLangLbl">Languages</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Main -->
+<div class="main" id="videos">
+  <div class="sec-header">
+    <div>
+      <div class="sec-title" id="secTitle">📚 Browse All Guides</div>
+      <div class="sec-sub" id="secSub">Step-by-step video tutorials to master selling on Amazon</div>
+    </div>
+    <div class="results-count" id="resultsCount"></div>
+  </div>
+  <div class="cat-bar" id="catBar"></div>
+  <div class="vid-grid" id="grid"></div>
+  <div class="empty" id="empty">
+    <div class="empty-icon">🔍</div>
+    <h3 id="emptyTitle">No videos found</h3>
+    <p id="emptySub">Try adjusting your search or filter.</p>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal-bg" id="modalBg" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-video" id="modalVideo"><button class="modal-close" onclick="closeModal()">✕</button></div>
+    <div class="modal-details" id="modalDetails"></div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer">
+  <p>🎓 Amazon Seller University — Training Video Library</p>
+  <p style="margin-top:8px;opacity:0.6" id="footerSub">Empowering sellers with knowledge, one video at a time.</p>
+</footer>
+
+<script>
+// ===== DATA =====
+const EN_VIDEOS = [{"id": 1, "title": "Sell in the Amazon store: 5-minute overview for beginners", "desc": "Introduction to selling on Amazon - Basic tips on how to have a smooth selling experience on Amazon.com.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "5:19", "yt": "https://www.youtube.com/watch?v=YIdt8HoIzJA", "embedId": "YIdt8HoIzJA", "thumb": "https://img.youtube.com/vi/YIdt8HoIzJA/hqdefault.jpg"}, {"id": 2, "title": "Intro to Seller Central", "desc": "Navigate Seller Central, your essential toolbox to selling with Amazon. Familiarize yourself with frequently used menus.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:43", "yt": "https://youtu.be/wGz3N0PlHQw", "embedId": "wGz3N0PlHQw", "thumb": "https://img.youtube.com/vi/wGz3N0PlHQw/hqdefault.jpg"}, {"id": 3, "title": "Intro to Seller University", "desc": "Leverage learning resources on Seller University. Identify the various channels to access how-to videos and guides.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:08", "yt": "https://www.youtube.com/watch?v=863VGHzIdTM", "embedId": "863VGHzIdTM", "thumb": "https://img.youtube.com/vi/863VGHzIdTM/hqdefault.jpg"}, {"id": 4, "title": "New Seller Central: Manage Shipments", "desc": "Flexible experience. This video introduces the My Shipments page and shows how to use it.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "4:41", "yt": "https://www.youtube.com/watch?v=XIXe6EtBU9k", "embedId": "XIXe6EtBU9k", "thumb": "https://img.youtube.com/vi/XIXe6EtBU9k/hqdefault.jpg"}, {"id": 5, "title": "Account Health Rating overview", "desc": "Learn about the Account Health Rating feature.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "5:20", "yt": "https://www.youtube.com/watch?v=yvp_MN_KFrU", "embedId": "yvp_MN_KFrU", "thumb": "https://img.youtube.com/vi/yvp_MN_KFrU/hqdefault.jpg"}, {"id": 6, "title": "Overview of Manage All Inventory", "desc": "Learn how the Manage All Inventory tool can help you keep your listings buyable, discoverable, and high quality.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:20", "yt": "https://www.youtube.com/watch?v=dkHynOMPah0", "embedId": "dkHynOMPah0", "thumb": "https://img.youtube.com/vi/dkHynOMPah0/hqdefault.jpg"}, {"id": 7, "title": "How to Successfully Register Your Brand with Amazon Brand Registry", "desc": "Learn how to protect and grow your brand on Amazon through Brand Registry. Step-by-step guide covering requirements.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "11:11", "yt": "https://youtu.be/p3_Iq6ETtdk", "embedId": "p3_Iq6ETtdk", "thumb": "https://img.youtube.com/vi/p3_Iq6ETtdk/hqdefault.jpg"}, {"id": 8, "title": "Featured Offer eligibility and strategies", "desc": "Learn what the Featured Offer is, and explore requirements, strategies, and tools that can help your offer become the Featured Offer in the Amazon store.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:23", "yt": "https://www.youtube.com/watch?v=uAB-kIf0E7E", "embedId": "uAB-kIf0E7E", "thumb": "https://img.youtube.com/vi/uAB-kIf0E7E/hqdefault.jpg"}, {"id": 9, "title": "Price products to please your customers", "desc": "After watching this video, you will be able to develop a pricing strategy for your products.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:48", "yt": "https://www.youtube.com/watch?v=rDPuQm-DPvI", "embedId": "rDPuQm-DPvI", "thumb": "https://img.youtube.com/vi/rDPuQm-DPvI/hqdefault.jpg"}, {"id": 10, "title": "Easy list", "desc": "Search and list multiple products at once on Amazon through Easy List.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "3:50", "yt": "https://www.youtube.com/watch?v=o9MpyFhotgU", "embedId": "o9MpyFhotgU", "thumb": "https://img.youtube.com/vi/o9MpyFhotgU/hqdefault.jpg"}, {"id": 11, "title": "Flywheel in Amazon", "desc": "This module will give you a glance on Flywheel, the simple way to know how new seller partners can help in Amazon's growth.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:23", "yt": "https://www.youtube.com/watch?v=0A-_MvnJA7A", "embedId": "0A-_MvnJA7A", "thumb": "https://img.youtube.com/vi/0A-_MvnJA7A/hqdefault.jpg"}, {"id": 12, "title": "Overview of Amazon selling policies", "desc": "Recognize selling practices that align or conflict with Amazon's policies. Identify the required compliance requirements.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:41", "yt": "https://www.youtube.com/watch?v=dkHynOMPah0", "embedId": "dkHynOMPah0", "thumb": "https://img.youtube.com/vi/dkHynOMPah0/hqdefault.jpg"}, {"id": 13, "title": "Intro to product restrictions, categories and conditions", "desc": "Be aware of Amazon's product restrictions and categories. Determine if your products qualify.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:40", "yt": "https://www.youtube.com/watch?v=fD8Qh4yixTg", "embedId": "fD8Qh4yixTg", "thumb": "https://img.youtube.com/vi/fD8Qh4yixTg/hqdefault.jpg"}, {"id": 14, "title": "Meet Amazon's compliance requirements using the Compliance Knowledge Portal", "desc": "Use the Compliance Knowledge Portal to proactively check and meet requirements that keep your customers safe and happy.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:46", "yt": "https://www.youtube.com/watch?v=A_lfdsPl6pk", "embedId": "A_lfdsPl6pk", "thumb": "https://img.youtube.com/vi/A_lfdsPl6pk/hqdefault.jpg"}, {"id": 15, "title": "Benefits of enrolling in Amazon Brand Registry", "desc": "Explore the benefits of registering a brand with Amazon.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:46", "yt": "https://www.youtube.com/watch?v=WSvFdiB2014", "embedId": "WSvFdiB2014", "thumb": "https://img.youtube.com/vi/WSvFdiB2014/hqdefault.jpg"}, {"id": 16, "title": "Welcome to Amazon", "desc": "Amazon empowers you to expand your business globally, offering powerful tools and programs like Fulfillment by Amazon.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:53", "yt": "https://www.youtube.com/watch?v=zmys5vyqzew", "embedId": "zmys5vyqzew", "thumb": "https://img.youtube.com/vi/zmys5vyqzew/hqdefault.jpg"}, {"id": 17, "title": "Understanding Multiple Account Policy", "desc": "Understand what Amazon's Multiple Account Policies are. This video provides an overview of the policies and best practices to remain compliant.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "3:43", "yt": "https://www.youtube.com/watch?v=AQ2VRLtciSk", "embedId": "AQ2VRLtciSk", "thumb": "https://img.youtube.com/vi/AQ2VRLtciSk/hqdefault.jpg"}, {"id": 18, "title": "Intro to the New Seller Guide", "desc": "Learn about six Amazon programs that help sellers generate more first-year sales.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "4:16", "yt": "https://www.youtube.com/watch?v=YNzv_9nEC1s", "embedId": "YNzv_9nEC1s", "thumb": "https://img.youtube.com/vi/YNzv_9nEC1s/hqdefault.jpg"}, {"id": 19, "title": "Addressing Multiple Account Policy Violations", "desc": "Understand what Amazon's Multiple Account Policies are and why and when Amazon takes action against Sellers that violate the policies.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "4:37", "yt": "https://www.youtube.com/watch?v=AQ2VRLtciSk", "embedId": "AQ2VRLtciSk", "thumb": "https://img.youtube.com/vi/AQ2VRLtciSk/hqdefault.jpg"}, {"id": 20, "title": "List products without a Product ID (UPC/GTIN Exemption)", "desc": "Identify if your product is eligible to be listed without a product ID. Apply for UPC exemption during the listing process.", "category": "List Your Products", "level": "Beginner", "duration": "3:35", "yt": "https://youtu.be/iKOJQUNH4Ac", "embedId": "iKOJQUNH4Ac", "thumb": "https://img.youtube.com/vi/iKOJQUNH4Ac/hqdefault.jpg"}, {"id": 21, "title": "Apply to sell a product, category, or brand", "desc": "Learn what approval requirements, documents, and steps you need to successfully list products, categories, and brands on Amazon.", "category": "List Your Products", "level": "Beginner", "duration": "4:33", "yt": "https://www.youtube.com/watch?v=Aqb5t8jqHg4", "embedId": "Aqb5t8jqHg4", "thumb": "https://img.youtube.com/vi/Aqb5t8jqHg4/hqdefault.jpg"}, {"id": 22, "title": "Generic Product Policy: Resolve Error Code 588", "desc": "Describe Error Code 5885, and how to resolve it.", "category": "List Your Products", "level": "Beginner", "duration": "51:10", "yt": "https://www.youtube.com/watch?v=rDPuQm-DPvI", "embedId": "rDPuQm-DPvI", "thumb": "https://img.youtube.com/vi/rDPuQm-DPvI/hqdefault.jpg"}, {"id": 23, "title": "Resolve Error code 566", "desc": "When listing products on Amazon, you may encounter Error Code 5665, which indicates a product identification issue. This comprehensive guide explains resolution steps.", "category": "List Your Products", "level": "Beginner", "duration": "56:39", "yt": "https://www.youtube.com/watch?v=nBEsVHNdI7o", "embedId": "nBEsVHNdI7o", "thumb": "https://img.youtube.com/vi/nBEsVHNdI7o/hqdefault.jpg"}, {"id": 24, "title": "Intro to the Amazon Generic Product Policy", "desc": "Define the Amazon Generic Product Policy.", "category": "List Your Products", "level": "Beginner", "duration": "3:27", "yt": "https://youtu.be/h8TbJMptyXg", "embedId": "h8TbJMptyXg", "thumb": "https://img.youtube.com/vi/h8TbJMptyXg/hqdefault.jpg"}, {"id": 25, "title": "GTIN Decline Reasons & How to Fix Them", "desc": "Was your product's GTIN declined? We review the most common decline reasons and provide practical solutions to fix each issue.", "category": "List Your Products", "level": "Beginner", "duration": "2:15", "yt": "https://www.youtube.com/watch?v=E0zjJdEyjgg", "embedId": "E0zjJdEyjgg", "thumb": "https://img.youtube.com/vi/E0zjJdEyjgg/hqdefault.jpg"}, {"id": 26, "title": "Create product variations one at a time", "desc": "Learn how variations help you group different sizes, colors, and styles of a product in one listing to let customers compare their options.", "category": "List Your Products", "level": "Beginner", "duration": "3:06", "yt": "https://www.youtube.com/watch?v=WBTgneNe38k", "embedId": "WBTgneNe38k", "thumb": "https://img.youtube.com/vi/WBTgneNe38k/hqdefault.jpg"}, {"id": 27, "title": "Create Amazon-ready listings using AI", "desc": "Create Amazon product listings in bulk using AI to convert or enhance your item details.", "category": "List Your Products", "level": "Intermediate", "duration": "3:51", "yt": "https://youtu.be/mGLnmQBjbps", "embedId": "mGLnmQBjbps", "thumb": "https://img.youtube.com/vi/mGLnmQBjbps/hqdefault.jpg"}, {"id": 28, "title": "Product ID overview", "desc": "Explain what a product ID is and why it's important.", "category": "List Your Products", "level": "Beginner", "duration": "3:28", "yt": "https://www.youtube.com/watch?v=Rsy6MRlEAFc", "embedId": "Rsy6MRlEAFc", "thumb": "https://img.youtube.com/vi/Rsy6MRlEAFc/hqdefault.jpg"}, {"id": 29, "title": "Report an error with a product detail page", "desc": "Explain how to report an error or problem with a detail page.", "category": "List Your Products", "level": "Beginner", "duration": "1:06", "yt": "https://www.youtube.com/watch?v=j6aNacyGQIo", "embedId": "j6aNacyGQIo", "thumb": "https://img.youtube.com/vi/j6aNacyGQIo/hqdefault.jpg"}, {"id": 30, "title": "Create product listings one at a time", "desc": "Learn how to create individual product listings in the Amazon store using the Add Products tool.", "category": "List Your Products", "level": "Beginner", "duration": "11:44", "yt": "https://www.youtube.com/watch?v=mXV-r3enDYY", "embedId": "mXV-r3enDYY", "thumb": "https://img.youtube.com/vi/mXV-r3enDYY/hqdefault.jpg"}, {"id": 31, "title": "Picture requirements for when you apply to sell", "desc": "Describe requirements for images when you apply to sell a restricted product or in a restricted category in the Amazon store.", "category": "List Your Products", "level": "Beginner", "duration": "1:49", "yt": "https://www.youtube.com/watch?v=gxU5fPolVp0", "embedId": "gxU5fPolVp0", "thumb": "https://img.youtube.com/vi/gxU5fPolVp0/hqdefault.jpg"}, {"id": 32, "title": "Generic Product Policy: Resolve error code 5886 and 588", "desc": "Describe error codes 5886 and 5887, and how to resolve them.", "category": "List Your Products", "level": "Beginner", "duration": "71:44", "yt": "https://www.youtube.com/watch?v=rDPuQm-DPvI", "embedId": "rDPuQm-DPvI", "thumb": "https://img.youtube.com/vi/rDPuQm-DPvI/hqdefault.jpg"}, {"id": 33, "title": "Resolve error 546", "desc": "Understand why sellers encounter error 5461 and how to list an item after encountering it.", "category": "List Your Products", "level": "Beginner", "duration": "17:03", "yt": "https://www.youtube.com/watch?v=nBEsVHNdI7o", "embedId": "nBEsVHNdI7o", "thumb": "https://img.youtube.com/vi/nBEsVHNdI7o/hqdefault.jpg"}, {"id": 34, "title": "Suggest an edit to a product detail page", "desc": "Apply steps to request an edit to a product detail page.", "category": "List Your Products", "level": "Beginner", "duration": "3:05", "yt": "https://www.youtube.com/watch?v=j6aNacyGQIo", "embedId": "j6aNacyGQIo", "thumb": "https://img.youtube.com/vi/j6aNacyGQIo/hqdefault.jpg"}, {"id": 35, "title": "Fix inactive or suppressed listings", "desc": "Learn how to find and update inactive or search suppressed listings using the Fix Your Products page in Seller Central.", "category": "List Your Products", "level": "Beginner", "duration": "3:09", "yt": "https://www.youtube.com/watch?v=SvpgfVEl-u4", "embedId": "SvpgfVEl-u4", "thumb": "https://img.youtube.com/vi/SvpgfVEl-u4/hqdefault.jpg"}, {"id": 36, "title": "Best practices for product detail pages", "desc": "To best position your listing to convert sales, put some work into the details. Titles, images, bullet points, descriptions, and keywords all matter.", "category": "List Your Products", "level": "Beginner", "duration": "1:52", "yt": "https://www.youtube.com/watch?v=j6aNacyGQIo", "embedId": "j6aNacyGQIo", "thumb": "https://img.youtube.com/vi/j6aNacyGQIo/hqdefault.jpg"}, {"id": 37, "title": "Generic Product Policy: Resolve error code 5886 and 5887", "desc": "Describe error codes 5886 and 5887, and how to resolve them.", "category": "List Your Products", "level": "Beginner", "duration": "1:44", "yt": "https://www.youtube.com/watch?v=rDPuQm-DPvI", "embedId": "rDPuQm-DPvI", "thumb": "https://img.youtube.com/vi/rDPuQm-DPvI/hqdefault.jpg"}, {"id": 38, "title": "Generic Product Policy: Resolve Error Code 5885", "desc": "Describe Error Code 5885, and how to resolve Error Code 5885.", "category": "List Your Products", "level": "Beginner", "duration": "1:10", "yt": "https://www.youtube.com/watch?v=rDPuQm-DPvI", "embedId": "rDPuQm-DPvI", "thumb": "https://img.youtube.com/vi/rDPuQm-DPvI/hqdefault.jpg"}, {"id": 39, "title": "Generic Product Policy: Resolve error code 5882", "desc": "Describe Error Code 5882, and how to resolve Error Code 5882.", "category": "List Your Products", "level": "Beginner", "duration": "1:10", "yt": "https://www.youtube.com/watch?v=rDPuQm-DPvI", "embedId": "rDPuQm-DPvI", "thumb": "https://img.youtube.com/vi/rDPuQm-DPvI/hqdefault.jpg"}, {"id": 40, "title": "Intro to Fulfillment by Amazon (FBA)", "desc": "Use Fulfillment By Amazon (FBA) to offer Prime shipping to your customers and have Amazon pick, pack, and ship orders on your behalf.", "category": "FBA", "level": "Beginner", "duration": "2:53", "yt": "https://www.youtube.com/watch?v=KKuNGAcuN20", "embedId": "KKuNGAcuN20", "thumb": "https://img.youtube.com/vi/KKuNGAcuN20/hqdefault.jpg"}, {"id": 41, "title": "FBA benefits and costs", "desc": "Summarize the benefits of FBA. Locate information about FBA fees on Seller Central.", "category": "FBA", "level": "Beginner", "duration": "1:39", "yt": "https://www.youtube.com/watch?v=T9u4COuyKm4", "embedId": "T9u4COuyKm4", "thumb": "https://img.youtube.com/vi/T9u4COuyKm4/hqdefault.jpg"}, {"id": 42, "title": "Send to Amazon – Step 2: Confirm shipping", "desc": "Get step-by-step instructions for Step 2 of the Send to Amazon workflow. Review shipment details for the FBA inventory you chose to send.", "category": "FBA", "level": "Beginner", "duration": "3:10", "yt": "https://www.youtube.com/watch?v=z1iEqajRwRU", "embedId": "z1iEqajRwRU", "thumb": "https://img.youtube.com/vi/z1iEqajRwRU/hqdefault.jpg"}, {"id": 43, "title": "Send to Amazon – Step 4: Confirm carrier and pallet information", "desc": "Confirm shipments and delivery windows.", "category": "FBA", "level": "Beginner", "duration": "3:15", "yt": "https://www.youtube.com/watch?v=exHYUA2-UbA", "embedId": "exHYUA2-UbA", "thumb": "https://img.youtube.com/vi/exHYUA2-UbA/hqdefault.jpg"}, {"id": 44, "title": "Send to Amazon: Create a case-pack template", "desc": "Learn what case packs are and how they can make adding FBA inventory faster and easier.", "category": "FBA", "level": "Beginner", "duration": "4:03", "yt": "https://www.youtube.com/watch?v=bPacMFif06I", "embedId": "bPacMFif06I", "thumb": "https://img.youtube.com/vi/bPacMFif06I/hqdefault.jpg"}, {"id": 45, "title": "Send to Amazon – Step 3: Print box labels", "desc": "View and print a pack list for each STA shipment.", "category": "FBA", "level": "Beginner", "duration": "2:50", "yt": "https://www.youtube.com/watch?v=i5v3on0pJBg", "embedId": "i5v3on0pJBg", "thumb": "https://img.youtube.com/vi/i5v3on0pJBg/hqdefault.jpg"}, {"id": 46, "title": "Send to Amazon: Step 1b - Pack individual units", "desc": "This video explains the pack individual units steps.", "category": "FBA", "level": "Beginner", "duration": "3:54", "yt": "https://www.youtube.com/watch?v=i5v3on0pJBg", "embedId": "i5v3on0pJBg", "thumb": "https://img.youtube.com/vi/i5v3on0pJBg/hqdefault.jpg"}, {"id": 47, "title": "Send to Amazon – Step 1: Choose inventory to send", "desc": "Access information about how to do a file upload instead of individual SKU selection.", "category": "FBA", "level": "Beginner", "duration": "4:39", "yt": "https://www.youtube.com/watch?v=03lavEpYsbw", "embedId": "03lavEpYsbw", "thumb": "https://img.youtube.com/vi/03lavEpYsbw/hqdefault.jpg"}, {"id": 48, "title": "Send to Amazon – Step 5: Print pallet labels", "desc": "Print and apply pallet labels if shipping pallets with an Amazon Partnered Carrier.", "category": "FBA", "level": "Beginner", "duration": "1:25", "yt": "https://www.youtube.com/watch?v=7xlMBK3FWCU", "embedId": "7xlMBK3FWCU", "thumb": "https://img.youtube.com/vi/7xlMBK3FWCU/hqdefault.jpg"}, {"id": 49, "title": "Intro to the FBA Inventory page", "desc": "Apply FBA concepts to your own business.", "category": "FBA", "level": "Beginner", "duration": "1:34", "yt": "https://www.youtube.com/watch?v=Ux5RFxYPJrM", "embedId": "Ux5RFxYPJrM", "thumb": "https://img.youtube.com/vi/Ux5RFxYPJrM/hqdefault.jpg"}, {"id": 50, "title": "Intro to Send to Amazon", "desc": "Navigate the menu to access the Send to Amazon page.", "category": "FBA", "level": "Beginner", "duration": "1:10", "yt": "https://www.youtube.com/watch?v=zmys5vyqzew", "embedId": "zmys5vyqzew", "thumb": "https://img.youtube.com/vi/zmys5vyqzew/hqdefault.jpg"}, {"id": 51, "title": "Intro to Fulfillment by Merchant (FBM)", "desc": "Explore the benefits of fulfilling orders yourself via Fulfillment by Merchant (FBM). Get started with next steps to manage your own fulfillment.", "category": "FBA", "level": "Beginner", "duration": "4:31", "yt": "https://www.youtube.com/watch?v=KKuNGAcuN20", "embedId": "KKuNGAcuN20", "thumb": "https://img.youtube.com/vi/KKuNGAcuN20/hqdefault.jpg"}, {"id": 52, "title": "How to File a SAFE-T Claim on Amazon", "desc": "Learn how to file a SAFE-T claim to recover your funds when order issues arise.", "category": "FBA", "level": "Beginner", "duration": "2:46", "yt": "https://www.youtube.com/watch?v=wQuxgLz9i7M", "embedId": "wQuxgLz9i7M", "thumb": "https://img.youtube.com/vi/wQuxgLz9i7M/hqdefault.jpg"}, {"id": 53, "title": "Shipping out your Amazon Easy Ship Order", "desc": "Learn why it is crucial to ship out your Amazon Easy Ship Order by ship by date.", "category": "FBA", "level": "Beginner", "duration": "2:13", "yt": "https://www.youtube.com/watch?v=oHPk2L2nYR8", "embedId": "oHPk2L2nYR8", "thumb": "https://img.youtube.com/vi/oHPk2L2nYR8/hqdefault.jpg"}, {"id": 54, "title": "Wrong item sent product compliance", "desc": "Learn about wrong item sent product condition issues and how to remain compliant.", "category": "FBA", "level": "Beginner", "duration": "3:48", "yt": "https://www.youtube.com/watch?v=Aqb5t8jqHg4", "embedId": "Aqb5t8jqHg4", "thumb": "https://img.youtube.com/vi/Aqb5t8jqHg4/hqdefault.jpg"}, {"id": 55, "title": "How to Reprint Easy Ship Labels & Tax Invoices", "desc": "Need to reprint a shipping label or tax invoice? We show you how to access your Easy Ship labels and reprint them along with tax invoices directly from Seller Central.", "category": "FBA", "level": "Beginner", "duration": "1:06", "yt": "https://www.youtube.com/watch?v=nGZydgibr9I", "embedId": "nGZydgibr9I", "thumb": "https://img.youtube.com/vi/nGZydgibr9I/hqdefault.jpg"}, {"id": 56, "title": "How to Get Easy-Ship & Self-Ship Order Cancellation Fee Reimbursement", "desc": "Learn how to get reimbursed for order cancellation fees on Easy-Ship and Self-Ship orders.", "category": "FBA", "level": "Beginner", "duration": "1:54", "yt": "https://www.youtube.com/watch?v=FAwYxBBWwLA", "embedId": "FAwYxBBWwLA", "thumb": "https://img.youtube.com/vi/FAwYxBBWwLA/hqdefault.jpg"}, {"id": 57, "title": "What to Do When Easy Ship Pickup Fails", "desc": "Did your Easy Ship pickup fail? We explain the common reasons for pickup failure and how to resolve the issue and reschedule your pickup successfully.", "category": "FBA", "level": "Beginner", "duration": "1:55", "yt": "https://www.youtube.com/watch?v=K-_xbApKmzI", "embedId": "K-_xbApKmzI", "thumb": "https://img.youtube.com/vi/K-_xbApKmzI/hqdefault.jpg"}, {"id": 58, "title": "Product Opportunity Explorer best practices", "desc": "Apply different research strategies to identify product opportunities.", "category": "Brand Registry", "level": "Beginner", "duration": "4:32", "yt": "https://www.youtube.com/watch?v=GtFHJvgNlKc", "embedId": "GtFHJvgNlKc", "thumb": "https://img.youtube.com/vi/GtFHJvgNlKc/hqdefault.jpg"}, {"id": 59, "title": "Meet customer demand with Product Opportunity Explorer", "desc": "Navigate Product Opportunity Explorer to find potential product opportunities.", "category": "Brand Registry", "level": "Beginner", "duration": "4:46", "yt": "https://www.youtube.com/watch?v=GtFHJvgNlKc", "embedId": "GtFHJvgNlKc", "thumb": "https://img.youtube.com/vi/GtFHJvgNlKc/hqdefault.jpg"}, {"id": 60, "title": "Brand Benefits", "desc": "This module gives you details about your brand and the benefits you get when registering your brand on Amazon.", "category": "Brand Registry", "level": "Beginner", "duration": "1:45", "yt": "https://www.youtube.com/watch?v=T9u4COuyKm4", "embedId": "T9u4COuyKm4", "thumb": "https://img.youtube.com/vi/T9u4COuyKm4/hqdefault.jpg"}, {"id": 61, "title": "Protect your brand with Amazon Brand Registry", "desc": "Get an overview of the protections brands enjoy after enrolling with Amazon Brand Registry.", "category": "Brand Registry", "level": "Beginner", "duration": "1:24", "yt": "https://www.youtube.com/watch?v=eN_0VfZKvyI", "embedId": "eN_0VfZKvyI", "thumb": "https://img.youtube.com/vi/eN_0VfZKvyI/hqdefault.jpg"}];
+const AR_VIDEOS = [{"id": 1, "title": "Sell in the Amazon store: 5-minute overview for beginners", "desc": "Introduction to selling on Amazon - Basic tips on how to have a smooth selling experience on Amazon.com.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "5:19", "yt": "https://www.youtube.com/watch?v=Qp9OSA4N0_U", "embedId": "Qp9OSA4N0_U", "thumb": "https://img.youtube.com/vi/Qp9OSA4N0_U/hqdefault.jpg"}, {"id": 2, "title": "Intro to Seller Central", "desc": "Navigate Seller Central, your essential toolbox to selling with Amazon. Familiarize yourself with frequently used menus.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:43", "yt": "https://www.youtube.com/watch?v=H0oMALzjonc", "embedId": "H0oMALzjonc", "thumb": "https://img.youtube.com/vi/H0oMALzjonc/hqdefault.jpg"}, {"id": 3, "title": "Intro to Seller University", "desc": "Leverage learning resources on Seller University. Identify the various channels to access how-to videos and guides.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:08", "yt": "https://www.youtube.com/watch?v=UTPD740ULSo", "embedId": "UTPD740ULSo", "thumb": "https://img.youtube.com/vi/UTPD740ULSo/hqdefault.jpg"}, {"id": 4, "title": "New Seller Central: Manage Shipments", "desc": "Flexible experience. This video introduces the My Shipments page and shows how to use it.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "4:41", "yt": "https://www.youtube.com/watch?v=MgUr0PkFm_A", "embedId": "MgUr0PkFm_A", "thumb": "https://img.youtube.com/vi/MgUr0PkFm_A/hqdefault.jpg"}, {"id": 5, "title": "Account Health Rating overview", "desc": "Learn about the Account Health Rating feature.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "5:20", "yt": "https://www.youtube.com/watch?v=v9kLIR95H3w", "embedId": "v9kLIR95H3w", "thumb": "https://img.youtube.com/vi/v9kLIR95H3w/hqdefault.jpg"}, {"id": 6, "title": "Overview of Manage All Inventory", "desc": "Learn how the Manage All Inventory tool can help you keep your listings buyable, discoverable, and high quality.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:20", "yt": "https://www.youtube.com/watch?v=Ec53IdSDtkA", "embedId": "Ec53IdSDtkA", "thumb": "https://img.youtube.com/vi/Ec53IdSDtkA/hqdefault.jpg"}, {"id": 7, "title": "How to Successfully Register Your Brand with Amazon Brand Registry", "desc": "Learn how to protect and grow your brand on Amazon through Brand Registry. Step-by-step guide covering requirements.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "11:11", "yt": "https://youtu.be/5ewMJmUoT-M", "embedId": "5ewMJmUoT-M", "thumb": "https://img.youtube.com/vi/5ewMJmUoT-M/hqdefault.jpg"}, {"id": 8, "title": "Featured Offer eligibility and strategies", "desc": "Learn what the Featured Offer is, and explore requirements, strategies, and tools that can help your offer become the Featured Offer in the Amazon store.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:23", "yt": "https://www.youtube.com/watch?v=XG8ZSmJJp9o", "embedId": "XG8ZSmJJp9o", "thumb": "https://img.youtube.com/vi/XG8ZSmJJp9o/hqdefault.jpg"}, {"id": 9, "title": "Price products to please your customers", "desc": "After watching this video, you will be able to develop a pricing strategy for your products.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:48", "yt": "https://www.youtube.com/watch?v=Z7zhtfC_zic", "embedId": "Z7zhtfC_zic", "thumb": "https://img.youtube.com/vi/Z7zhtfC_zic/hqdefault.jpg"}, {"id": 10, "title": "Easy list", "desc": "Search and list multiple products at once on Amazon through Easy List.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "3:50", "yt": "https://www.youtube.com/watch?v=TCtFGAvpGeg", "embedId": "TCtFGAvpGeg", "thumb": "https://img.youtube.com/vi/TCtFGAvpGeg/hqdefault.jpg"}, {"id": 11, "title": "Overview of Amazon selling policies", "desc": "Recognize selling practices that align or conflict with Amazon's policies. Identify the required compliance requirements.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:41", "yt": "https://www.youtube.com/watch?v=Ec53IdSDtkA", "embedId": "Ec53IdSDtkA", "thumb": "https://img.youtube.com/vi/Ec53IdSDtkA/hqdefault.jpg"}, {"id": 12, "title": "Intro to product restrictions, categories and conditions", "desc": "Be aware of Amazon's product restrictions and categories. Determine if your products qualify.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:40", "yt": "https://www.youtube.com/watch?v=NfKL05Cxn5I", "embedId": "NfKL05Cxn5I", "thumb": "https://img.youtube.com/vi/NfKL05Cxn5I/hqdefault.jpg"}, {"id": 13, "title": "Meet Amazon's compliance requirements using the Compliance Knowledge Portal", "desc": "Use the Compliance Knowledge Portal to proactively check and meet requirements that keep your customers safe and happy.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "2:46", "yt": "https://www.youtube.com/watch?v=Gwd5FQwSXyY", "embedId": "Gwd5FQwSXyY", "thumb": "https://img.youtube.com/vi/Gwd5FQwSXyY/hqdefault.jpg"}, {"id": 14, "title": "Benefits of enrolling in Amazon Brand Registry", "desc": "Explore the benefits of registering a brand with Amazon.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:46", "yt": "https://www.youtube.com/watch?v=s61Vc5_C5as", "embedId": "s61Vc5_C5as", "thumb": "https://img.youtube.com/vi/s61Vc5_C5as/hqdefault.jpg"}, {"id": 15, "title": "Welcome to Amazon", "desc": "Amazon empowers you to expand your business globally, offering powerful tools and programs like Fulfillment by Amazon.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "1:53", "yt": "https://www.youtube.com/watch?v=UuTbpvqHY5Y", "embedId": "UuTbpvqHY5Y", "thumb": "https://img.youtube.com/vi/UuTbpvqHY5Y/hqdefault.jpg"}, {"id": 16, "title": "Understanding Multiple Account Policy", "desc": "Understand what Amazon's Multiple Account Policies are. This video provides an overview of the policies and best practices to remain compliant.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "3:43", "yt": "https://www.youtube.com/watch?v=ztuRKKEDR34", "embedId": "ztuRKKEDR34", "thumb": "https://img.youtube.com/vi/ztuRKKEDR34/hqdefault.jpg"}, {"id": 17, "title": "Intro to the New Seller Guide", "desc": "Learn about six Amazon programs that help sellers generate more first-year sales.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "4:16", "yt": "https://www.youtube.com/watch?v=0A-_MvnJA7A", "embedId": "0A-_MvnJA7A", "thumb": "https://img.youtube.com/vi/0A-_MvnJA7A/hqdefault.jpg"}, {"id": 18, "title": "Addressing Multiple Account Policy Violations", "desc": "Understand what Amazon's Multiple Account Policies are and why and when Amazon takes action against Sellers that violate the policies.", "category": "Selling on Amazon 101", "level": "Beginner", "duration": "4:37", "yt": "https://www.youtube.com/watch?v=ztuRKKEDR34", "embedId": "ztuRKKEDR34", "thumb": "https://img.youtube.com/vi/ztuRKKEDR34/hqdefault.jpg"}, {"id": 19, "title": "List products without a Product ID (UPC/GTIN Exemption)", "desc": "Identify if your product is eligible to be listed without a product ID. Apply for UPC exemption during the listing process.", "category": "List Your Products", "level": "Beginner", "duration": "3:35", "yt": "https://youtu.be/QHcd-zvfmxI", "embedId": "QHcd-zvfmxI", "thumb": "https://img.youtube.com/vi/QHcd-zvfmxI/hqdefault.jpg"}, {"id": 20, "title": "Apply to sell a product, category, or brand", "desc": "Learn what approval requirements, documents, and steps you need to successfully list products, categories, and brands on Amazon.", "category": "List Your Products", "level": "Beginner", "duration": "4:33", "yt": "https://www.youtube.com/watch?v=gU7P8Nc_OlM", "embedId": "gU7P8Nc_OlM", "thumb": "https://img.youtube.com/vi/gU7P8Nc_OlM/hqdefault.jpg"}, {"id": 21, "title": "Generic Product Policy: Resolve Error Code 588", "desc": "Describe Error Code 5885, and how to resolve it.", "category": "List Your Products", "level": "Beginner", "duration": "51:10", "yt": "https://www.youtube.com/watch?v=Z7zhtfC_zic", "embedId": "Z7zhtfC_zic", "thumb": "https://img.youtube.com/vi/Z7zhtfC_zic/hqdefault.jpg"}, {"id": 22, "title": "Resolve Error code 566", "desc": "When listing products on Amazon, you may encounter Error Code 5665, which indicates a product identification issue. This comprehensive guide explains resolution steps.", "category": "List Your Products", "level": "Beginner", "duration": "56:39", "yt": "https://www.youtube.com/watch?v=-19SbT2pstw", "embedId": "-19SbT2pstw", "thumb": "https://img.youtube.com/vi/-19SbT2pstw/hqdefault.jpg"}, {"id": 23, "title": "Intro to the Amazon Generic Product Policy", "desc": "Define the Amazon Generic Product Policy.", "category": "List Your Products", "level": "Beginner", "duration": "3:27", "yt": "https://youtu.be/-CKLLeOAclI", "embedId": "-CKLLeOAclI", "thumb": "https://img.youtube.com/vi/-CKLLeOAclI/hqdefault.jpg"}, {"id": 24, "title": "Create product variations one at a time", "desc": "Learn how variations help you group different sizes, colors, and styles of a product in one listing to let customers compare their options.", "category": "List Your Products", "level": "Beginner", "duration": "3:06", "yt": "https://www.youtube.com/watch?v=b5xentZaiRc", "embedId": "b5xentZaiRc", "thumb": "https://img.youtube.com/vi/b5xentZaiRc/hqdefault.jpg"}, {"id": 25, "title": "Create Amazon-ready listings using AI", "desc": "Create Amazon product listings in bulk using AI to convert or enhance your item details.", "category": "List Your Products", "level": "Intermediate", "duration": "3:51", "yt": "https://youtu.be/6umEy2IC91Y", "embedId": "6umEy2IC91Y", "thumb": "https://img.youtube.com/vi/6umEy2IC91Y/hqdefault.jpg"}, {"id": 26, "title": "Product ID overview", "desc": "Explain what a product ID is and why it's important.", "category": "List Your Products", "level": "Beginner", "duration": "3:28", "yt": "https://www.youtube.com/watch?v=HKDSeRBJa28", "embedId": "HKDSeRBJa28", "thumb": "https://img.youtube.com/vi/HKDSeRBJa28/hqdefault.jpg"}, {"id": 27, "title": "Create product listings one at a time", "desc": "Learn how to create individual product listings in the Amazon store using the Add Products tool.", "category": "List Your Products", "level": "Beginner", "duration": "11:44", "yt": "https://www.youtube.com/watch?v=PV8028STakk", "embedId": "PV8028STakk", "thumb": "https://img.youtube.com/vi/PV8028STakk/hqdefault.jpg"}, {"id": 28, "title": "Picture requirements for when you apply to sell", "desc": "Describe requirements for images when you apply to sell a restricted product or in a restricted category in the Amazon store.", "category": "List Your Products", "level": "Beginner", "duration": "1:49", "yt": "https://www.youtube.com/watch?v=C67XmbdYMw4", "embedId": "C67XmbdYMw4", "thumb": "https://img.youtube.com/vi/C67XmbdYMw4/hqdefault.jpg"}, {"id": 29, "title": "Generic Product Policy: Resolve error code 5886 and 588", "desc": "Describe error codes 5886 and 5887, and how to resolve them.", "category": "List Your Products", "level": "Beginner", "duration": "71:44", "yt": "https://www.youtube.com/watch?v=Z7zhtfC_zic", "embedId": "Z7zhtfC_zic", "thumb": "https://img.youtube.com/vi/Z7zhtfC_zic/hqdefault.jpg"}, {"id": 30, "title": "Resolve error 546", "desc": "Understand why sellers encounter error 5461 and how to list an item after encountering it.", "category": "List Your Products", "level": "Beginner", "duration": "17:03", "yt": "https://www.youtube.com/watch?v=-19SbT2pstw", "embedId": "-19SbT2pstw", "thumb": "https://img.youtube.com/vi/-19SbT2pstw/hqdefault.jpg"}, {"id": 31, "title": "Fix inactive or suppressed listings", "desc": "Learn how to find and update inactive or search suppressed listings using the Fix Your Products page in Seller Central.", "category": "List Your Products", "level": "Beginner", "duration": "3:09", "yt": "https://www.youtube.com/watch?v=_ZNXvm0XTns", "embedId": "_ZNXvm0XTns", "thumb": "https://img.youtube.com/vi/_ZNXvm0XTns/hqdefault.jpg"}, {"id": 32, "title": "Generic Product Policy: Resolve error code 5886 and 5887", "desc": "Describe error codes 5886 and 5887, and how to resolve them.", "category": "List Your Products", "level": "Beginner", "duration": "1:44", "yt": "https://www.youtube.com/watch?v=Z7zhtfC_zic", "embedId": "Z7zhtfC_zic", "thumb": "https://img.youtube.com/vi/Z7zhtfC_zic/hqdefault.jpg"}, {"id": 33, "title": "Generic Product Policy: Resolve Error Code 5885", "desc": "Describe Error Code 5885, and how to resolve Error Code 5885.", "category": "List Your Products", "level": "Beginner", "duration": "1:10", "yt": "https://www.youtube.com/watch?v=Z7zhtfC_zic", "embedId": "Z7zhtfC_zic", "thumb": "https://img.youtube.com/vi/Z7zhtfC_zic/hqdefault.jpg"}, {"id": 34, "title": "Generic Product Policy: Resolve error code 5882", "desc": "Describe Error Code 5882, and how to resolve Error Code 5882.", "category": "List Your Products", "level": "Beginner", "duration": "1:10", "yt": "https://www.youtube.com/watch?v=Z7zhtfC_zic", "embedId": "Z7zhtfC_zic", "thumb": "https://img.youtube.com/vi/Z7zhtfC_zic/hqdefault.jpg"}, {"id": 35, "title": "Intro to Fulfillment by Amazon (FBA)", "desc": "Use Fulfillment By Amazon (FBA) to offer Prime shipping to your customers and have Amazon pick, pack, and ship orders on your behalf.", "category": "FBA", "level": "Beginner", "duration": "2:53", "yt": "https://www.youtube.com/watch?v=zV_DONMeNFc", "embedId": "zV_DONMeNFc", "thumb": "https://img.youtube.com/vi/zV_DONMeNFc/hqdefault.jpg"}, {"id": 36, "title": "FBA benefits and costs", "desc": "Summarize the benefits of FBA. Locate information about FBA fees on Seller Central.", "category": "FBA", "level": "Beginner", "duration": "1:39", "yt": "https://www.youtube.com/watch?v=oN0A6VAecm4", "embedId": "oN0A6VAecm4", "thumb": "https://img.youtube.com/vi/oN0A6VAecm4/hqdefault.jpg"}, {"id": 37, "title": "Send to Amazon – Step 2: Confirm shipping", "desc": "Get step-by-step instructions for Step 2 of the Send to Amazon workflow. Review shipment details for the FBA inventory you chose to send.", "category": "FBA", "level": "Beginner", "duration": "3:10", "yt": "https://www.youtube.com/watch?v=O_9u5nGd7X8", "embedId": "O_9u5nGd7X8", "thumb": "https://img.youtube.com/vi/O_9u5nGd7X8/hqdefault.jpg"}, {"id": 38, "title": "Send to Amazon – Step 4: Confirm carrier and pallet information", "desc": "Confirm shipments and delivery windows.", "category": "FBA", "level": "Beginner", "duration": "3:15", "yt": "https://www.youtube.com/watch?v=7_uoKm2CsfY", "embedId": "7_uoKm2CsfY", "thumb": "https://img.youtube.com/vi/7_uoKm2CsfY/hqdefault.jpg"}, {"id": 39, "title": "Send to Amazon: Create a case-pack template", "desc": "Learn what case packs are and how they can make adding FBA inventory faster and easier.", "category": "FBA", "level": "Beginner", "duration": "4:03", "yt": "https://www.youtube.com/watch?v=wSnzQND4_Ns", "embedId": "wSnzQND4_Ns", "thumb": "https://img.youtube.com/vi/wSnzQND4_Ns/hqdefault.jpg"}, {"id": 40, "title": "Send to Amazon – Step 3: Print box labels", "desc": "View and print a pack list for each STA shipment.", "category": "FBA", "level": "Beginner", "duration": "2:50", "yt": "https://www.youtube.com/watch?v=FG_VYhfCsZU", "embedId": "FG_VYhfCsZU", "thumb": "https://img.youtube.com/vi/FG_VYhfCsZU/hqdefault.jpg"}, {"id": 41, "title": "Send to Amazon: Step 1b - Pack individual units", "desc": "This video explains the pack individual units steps.", "category": "FBA", "level": "Beginner", "duration": "3:54", "yt": "https://www.youtube.com/watch?v=FG_VYhfCsZU", "embedId": "FG_VYhfCsZU", "thumb": "https://img.youtube.com/vi/FG_VYhfCsZU/hqdefault.jpg"}, {"id": 42, "title": "Send to Amazon – Step 1: Choose inventory to send", "desc": "Access information about how to do a file upload instead of individual SKU selection.", "category": "FBA", "level": "Beginner", "duration": "4:39", "yt": "https://www.youtube.com/watch?v=pcmgwzWydr0", "embedId": "pcmgwzWydr0", "thumb": "https://img.youtube.com/vi/pcmgwzWydr0/hqdefault.jpg"}, {"id": 43, "title": "Send to Amazon – Step 5: Print pallet labels", "desc": "Print and apply pallet labels if shipping pallets with an Amazon Partnered Carrier.", "category": "FBA", "level": "Beginner", "duration": "1:25", "yt": "https://www.youtube.com/watch?v=9JuGlIywaRs", "embedId": "9JuGlIywaRs", "thumb": "https://img.youtube.com/vi/9JuGlIywaRs/hqdefault.jpg"}, {"id": 44, "title": "Intro to the FBA Inventory page", "desc": "Apply FBA concepts to your own business.", "category": "FBA", "level": "Beginner", "duration": "1:34", "yt": "https://www.youtube.com/watch?v=IZVxQ_ej9tQ", "embedId": "IZVxQ_ej9tQ", "thumb": "https://img.youtube.com/vi/IZVxQ_ej9tQ/hqdefault.jpg"}, {"id": 45, "title": "Intro to Send to Amazon", "desc": "Navigate the menu to access the Send to Amazon page.", "category": "FBA", "level": "Beginner", "duration": "1:10", "yt": "https://www.youtube.com/watch?v=UuTbpvqHY5Y", "embedId": "UuTbpvqHY5Y", "thumb": "https://img.youtube.com/vi/UuTbpvqHY5Y/hqdefault.jpg"}, {"id": 46, "title": "Intro to Fulfillment by Merchant (FBM)", "desc": "Explore the benefits of fulfilling orders yourself via Fulfillment by Merchant (FBM). Get started with next steps to manage your own fulfillment.", "category": "FBA", "level": "Beginner", "duration": "4:31", "yt": "https://www.youtube.com/watch?v=zV_DONMeNFc", "embedId": "zV_DONMeNFc", "thumb": "https://img.youtube.com/vi/zV_DONMeNFc/hqdefault.jpg"}, {"id": 47, "title": "Wrong item sent product compliance", "desc": "Learn about wrong item sent product condition issues and how to remain compliant.", "category": "FBA", "level": "Beginner", "duration": "3:48", "yt": "https://www.youtube.com/watch?v=gU7P8Nc_OlM", "embedId": "gU7P8Nc_OlM", "thumb": "https://img.youtube.com/vi/gU7P8Nc_OlM/hqdefault.jpg"}, {"id": 48, "title": "Brand Benefits", "desc": "This module gives you details about your brand and the benefits you get when registering your brand on Amazon.", "category": "Brand Registry", "level": "Beginner", "duration": "1:45", "yt": "https://www.youtube.com/watch?v=oN0A6VAecm4", "embedId": "oN0A6VAecm4", "thumb": "https://img.youtube.com/vi/oN0A6VAecm4/hqdefault.jpg"}, {"id": 49, "title": "Protect your brand with Amazon Brand Registry", "desc": "Get an overview of the protections brands enjoy after enrolling with Amazon Brand Registry.", "category": "Brand Registry", "level": "Beginner", "duration": "1:24", "yt": "https://www.youtube.com/watch?v=7d4Jkeg-sns", "embedId": "7d4Jkeg-sns", "thumb": "https://img.youtube.com/vi/7d4Jkeg-sns/hqdefault.jpg"}];
+
+const CATS_EN = [
+  {name:"All",icon:"🎬"},
+  {name:"Selling on Amazon 101",icon:"🚀"},
+  {name:"List Your Products",icon:"🏷️"},
+  {name:"FBA",icon:"📦"},
+  {name:"Brand Registry",icon:"🛡️"}
+];
+const CATS_AR = [
+  {name:"الكل",icon:"🎬",en:"All"},
+  {name:"أساسيات البيع على أمازون",icon:"🚀",en:"Selling on Amazon 101"},
+  {name:"إضافة المنتجات",icon:"🏷️",en:"List Your Products"},
+  {name:"الشحن من أمازون",icon:"📦",en:"FBA"},
+  {name:"سجل العلامة التجارية",icon:"🛡️",en:"Brand Registry"}
+];
+
+const UI = {
+  en: {
+    navTitle: 'Seller University <span>Training Library</span>',
+    browse: 'Browse Videos',
+    home: 'Home',
+    langBtn: '🇸🇦 العربية',
+    badge: 'Amazon Seller University',
+    heroLine1: 'Seller Training',
+    heroLine2: 'Video Library',
+    heroDesc: 'Your complete guide to selling on Amazon — from getting started to advanced fulfillment. Learn listing, FBA, Brand Registry, and more with step-by-step video tutorials.',
+    searchPlaceholder: 'Search videos by topic, keyword, or category...',
+    searchBtn: 'Search',
+    statVids: 'Video Guides',
+    statCat: 'Categories',
+    statLang: 'Languages',
+    secTitle: '📚 Browse All Guides',
+    secSub: 'Step-by-step video tutorials to master selling on Amazon',
+    showing: 'Showing',
+    videos: 'videos',
+    video: 'video',
+    emptyTitle: 'No videos found',
+    emptySub: 'Try adjusting your search or filter.',
+    watchBtn: '▶ Watch Video',
+    footer: 'Empowering sellers with knowledge, one video at a time.'
+  },
+  ar: {
+    navTitle: 'جامعة البائعين <span>مكتبة التدريب</span>',
+    browse: 'تصفح الفيديوهات',
+    home: 'الرئيسية',
+    langBtn: '🇬🇧 English',
+    badge: 'جامعة بائعي أمازون',
+    heroLine1: 'مكتبة التدريب',
+    heroLine2: 'فيديوهات تعليمية',
+    heroDesc: 'دليلك الشامل للبيع على أمازون — من البداية إلى الشحن المتقدم. تعلم إضافة المنتجات، الشحن من أمازون، سجل العلامة التجارية والمزيد من خلال فيديوهات تعليمية خطوة بخطوة.',
+    searchPlaceholder: 'ابحث عن فيديو حسب الموضوع أو الكلمة أو الفئة...',
+    searchBtn: 'بحث',
+    statVids: 'فيديو تعليمي',
+    statCat: 'فئات',
+    statLang: 'لغات',
+    secTitle: '📚 تصفح جميع الفيديوهات',
+    secSub: 'فيديوهات تعليمية خطوة بخطوة لإتقان البيع على أمازون',
+    showing: 'عرض',
+    videos: 'فيديوهات',
+    video: 'فيديو',
+    emptyTitle: 'لم يتم العثور على فيديوهات',
+    emptySub: 'حاول تعديل البحث أو الفلتر.',
+    watchBtn: '▶ شاهد الفيديو',
+    footer: 'تمكين البائعين بالمعرفة، فيديو تلو الآخر.'
+  }
+};
+
+// ===== STATE =====
+let lang = "en";
+let currentCat = "All";
+
+function getVideos() { return lang === "en" ? EN_VIDEOS : AR_VIDEOS; }
+function getCats() { return lang === "en" ? CATS_EN : CATS_AR; }
+function t() { return UI[lang]; }
+
+// ===== LANGUAGE TOGGLE =====
+function toggleLang() {
+  lang = lang === "en" ? "ar" : "en";
+  currentCat = "All";
+  document.getElementById("searchInput").value = "";
+  
+  // RTL / LTR
+  document.body.classList.toggle("rtl", lang === "ar");
+  document.getElementById("root").lang = lang === "ar" ? "ar" : "en";
+  document.getElementById("root").dir = lang === "ar" ? "rtl" : "ltr";
+  
+  // Update UI text
+  const u = t();
+  document.getElementById("navTitle").innerHTML = u.navTitle;
+  document.getElementById("navBrowse").textContent = u.browse;
+  document.getElementById("navHome").textContent = u.home;
+  document.getElementById("langBtn").textContent = u.langBtn;
+  document.getElementById("heroBadge").textContent = u.badge;
+  document.getElementById("heroLine1").textContent = u.heroLine1;
+  document.getElementById("heroLine2").textContent = u.heroLine2;
+  document.getElementById("heroDesc").textContent = u.heroDesc;
+  document.getElementById("searchInput").placeholder = u.searchPlaceholder;
+  document.getElementById("searchBtn").textContent = u.searchBtn;
+  document.getElementById("statVidsLbl").textContent = u.statVids;
+  document.getElementById("statCatLbl").textContent = u.statCat;
+  document.getElementById("statLangLbl").textContent = u.statLang;
+  document.getElementById("secTitle").textContent = u.secTitle;
+  document.getElementById("secSub").textContent = u.secSub;
+  document.getElementById("emptyTitle").textContent = u.emptyTitle;
+  document.getElementById("emptySub").textContent = u.emptySub;
+  document.getElementById("footerSub").textContent = u.footer;
+  document.getElementById("statVids").textContent = getVideos().length;
+  
+  render();
+}
+
+// ===== RENDER =====
+function render() {
+  const vids = getVideos();
+  const cats = getCats();
+  const u = t();
+  const q = document.getElementById("searchInput").value.toLowerCase().trim();
+  
+  // Category bar
+  const bar = document.getElementById("catBar");
+  bar.innerHTML = "";
+  cats.forEach(c => {
+    const catKey = c.en || c.name;
+    const count = c.name === "All" || c.name === "الكل" ? vids.length : vids.filter(v => v.category === catKey).length;
+    const pill = document.createElement("button");
+    pill.className = "cat-pill" + (currentCat === catKey ? " active" : "");
+    pill.innerHTML = c.icon + " " + c.name + ' <span class="pill-count">' + count + "</span>";
+    pill.onclick = () => { currentCat = catKey; render(); };
+    bar.appendChild(pill);
+  });
+  
+  // Filter
+  const filtered = vids.filter(v => {
+    const catMatch = currentCat === "All" || v.category === currentCat;
+    const searchMatch = !q || v.title.toLowerCase().includes(q) || v.desc.toLowerCase().includes(q) || v.category.toLowerCase().includes(q);
+    return catMatch && searchMatch;
+  });
+  
+  document.getElementById("resultsCount").textContent = u.showing + " " + filtered.length + " " + (filtered.length !== 1 ? u.videos : u.video);
+  
+  const grid = document.getElementById("grid");
+  const empty = document.getElementById("empty");
+  grid.innerHTML = "";
+  
+  if (filtered.length === 0) {
+    empty.classList.add("vis");
+    grid.style.display = "none";
+    return;
+  }
+  empty.classList.remove("vis");
+  grid.style.display = "grid";
+  
+  filtered.forEach((v, i) => {
+    const card = document.createElement("div");
+    card.className = "vid-card";
+    
+    const lvlClass = v.level === "Beginner" ? "badge-beginner" : "badge-intermediate";
+    const thumbHtml = v.thumb
+      ? '<img src="' + v.thumb + '" alt="" loading="lazy" class="vid-thumb-img">'
+      : '<div style="position:absolute;inset:0;background:linear-gradient(135deg,#232f3e,#1d2736);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px"><span style="font-size:40px;opacity:.5">▶</span><span style="color:rgba(255,255,255,.6);font-size:14px;font-weight:600">' + (v.duration||"") + '</span></div>';
+    
+    const ytBtn = v.yt ? '<a href="' + v.yt + '" target="_blank" class="yt-btn" onclick="event.stopPropagation()">' + (lang==="ar" ? "🇸🇦 شاهد" : "🇬🇧 Watch") + '</a>' : '';
+    
+    card.innerHTML =
+      '<div class="thumb">' + thumbHtml +
+      '<div class="thumb-overlay"></div>' +
+      '<div class="play-btn"><svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg></div>' +
+      '<span class="badge-level ' + lvlClass + '">' + v.level + '</span></div>' +
+      '<div class="vid-info">' +
+      '<div class="vid-cat">' + v.category + '</div>' +
+      '<div class="vid-title">' + v.title + '</div>' +
+      '<div class="vid-desc">' + v.desc + '</div>' +
+      '<div class="vid-meta">' + ytBtn + '<span class="dur-label">' + (v.duration||"") + '</span></div></div>';
+    
+    card.onclick = () => openModal(v);
+    grid.appendChild(card);
+    setTimeout(() => card.classList.add("vis"), i * 60);
+  });
+}
+
+// ===== MODAL =====
+function openModal(v) {
+  const bg = document.getElementById("modalBg");
+  const va = document.getElementById("modalVideo");
+  const det = document.getElementById("modalDetails");
+  const u = t();
+  
+  va.innerHTML = '<button class="modal-close" onclick="closeModal()">✕</button>' +
+    (v.embedId
+      ? '<iframe src="https://www.youtube.com/embed/' + v.embedId + '?autoplay=1" allowfullscreen allow="autoplay"></iframe>'
+      : '<div style="position:absolute;inset:0;background:linear-gradient(135deg,#232f3e,#0c1220);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:16px"><span style="font-size:64px">🎓</span><span style="color:rgba(255,255,255,.7);font-size:18px;font-weight:600">' + v.title + '</span></div>');
+  
+  det.innerHTML =
+    '<div class="vid-cat">' + v.category + '</div>' +
+    '<h2>' + v.title + '</h2>' +
+    '<p>' + v.desc + '</p>' +
+    (v.yt ? '<a href="' + v.yt + '" target="_blank" class="modal-btn modal-btn-primary">' + u.watchBtn + '</a>' : '');
+  
+  bg.classList.add("active");
+  document.body.style.overflow = "hidden";
+}
+
+function closeModal() {
+  document.getElementById("modalBg").classList.remove("active");
+  document.body.style.overflow = "";
+  document.getElementById("modalVideo").innerHTML = '<button class="modal-close" onclick="closeModal()">✕</button>';
+}
+
+// ===== SCROLL =====
+function scrollTo(id) { document.getElementById(id).scrollIntoView({behavior:"smooth"}); }
+window.addEventListener("scroll", () => {
+  document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 50);
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); });
+
+// ===== INIT =====
+document.getElementById("statVids").textContent = EN_VIDEOS.length;
+render();
+
+
+// Global image error handler for thumbnails
+document.addEventListener('error', function(e) {
+  if (e.target.tagName === 'IMG' && e.target.classList.contains('vid-thumb-img')) {
+    e.target.style.display = 'none';
+    var fallback = document.createElement('div');
+    fallback.style.cssText = 'position:absolute;inset:0;background:linear-gradient(135deg,#232f3e,#1d2736);display:flex;align-items:center;justify-content:center';
+    fallback.innerHTML = '<span style="font-size:40px;opacity:.5">▶</span>';
+    e.target.parentElement.appendChild(fallback);
+  }
+}, true);
+</script>
+
+</body></html>
